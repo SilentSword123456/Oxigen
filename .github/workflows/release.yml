@@ -1,0 +1,75 @@
+name: Build and Publish to itch.io
+
+on:
+  push:
+    tags:
+      - "v*"          # triggers on tags like v1.0.0
+  workflow_dispatch:    # lets you also run it manually from the Actions tab
+
+env:
+  GODOT_VERSION: 4.3     # <-- set this to your exact Godot version
+  ITCH_USER: silentsword-123
+  ITCH_GAME: oxigen
+
+jobs:
+  export:
+    name: Export Godot builds
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Export builds
+        uses: firebelley/godot-export@v6.1.1
+        with:
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
+          relative_project_path: ./
+          archive_output: true
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: builds
+          path: ${{ github.workspace }}/builds/*
+
+  publish:
+    name: Publish to itch.io
+    needs: export
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: builds
+          path: builds
+
+      - name: List builds (debug)
+        run: ls -R builds
+
+      - name: Publish Windows build
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: windows
+          ITCH_GAME: ${{ env.ITCH_GAME }}
+          ITCH_USER: ${{ env.ITCH_USER }}
+          PACKAGE: builds/windows.zip
+
+      - name: Publish Linux build
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: linux
+          ITCH_GAME: ${{ env.ITCH_GAME }}
+          ITCH_USER: ${{ env.ITCH_USER }}
+          PACKAGE: builds/linux.zip
+
+      - name: Publish HTML5 build
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: html5
+          ITCH_GAME: ${{ env.ITCH_GAME }}
+          ITCH_USER: ${{ env.ITCH_USER }}
+          PACKAGE: builds/html5.zip
