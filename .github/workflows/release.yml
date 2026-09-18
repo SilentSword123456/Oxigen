@@ -27,11 +27,16 @@ jobs:
           relative_project_path: ./
           archive_output: true
 
+      - name: Prepare build artifacts
+        run: |
+          mkdir -p "${{ github.workspace }}/builds"
+          cp "/home/runner/.local/share/godot/archives/Windows Desktop.zip" "${{ github.workspace }}/builds/windows.zip"
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: builds
-          path: ${{ github.workspace }}/builds/*
+          path: ${{ github.workspace }}/builds/*.zip
 
   publish:
     name: Publish to itch.io
@@ -55,21 +60,3 @@ jobs:
           ITCH_GAME: ${{ env.ITCH_GAME }}
           ITCH_USER: ${{ env.ITCH_USER }}
           PACKAGE: builds/windows.zip
-
-      - name: Publish Linux build
-        uses: manleydev/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: linux
-          ITCH_GAME: ${{ env.ITCH_GAME }}
-          ITCH_USER: ${{ env.ITCH_USER }}
-          PACKAGE: builds/linux.zip
-
-      - name: Publish HTML5 build
-        uses: manleydev/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: html5
-          ITCH_GAME: ${{ env.ITCH_GAME }}
-          ITCH_USER: ${{ env.ITCH_USER }}
-          PACKAGE: builds/html5.zip
