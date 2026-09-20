@@ -14,6 +14,10 @@ config/name="Oxigen"
 run/main_scene="uid://hytexeutghkc"
 config/features=PackedStringArray("4.7", "Mobile")
 
+[autoload]
+
+Global="*uid://c5bgmqx4f0254"
+
 [display]
 
 window/stretch/mode="canvas_items"
