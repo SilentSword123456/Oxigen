@@ -76,6 +76,9 @@ jobs:
           ITCH_USER: ${{ env.ITCH_USER }}
           PACKAGE: builds/windows.zip
 
+      - name: Unpack web build
+        run: unzip -q builds/web.zip -d builds/web
+
       - name: Publish Web build
         uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -83,4 +86,4 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ env.ITCH_GAME }}
           ITCH_USER: ${{ env.ITCH_USER }}
-          PACKAGE: builds/web.zip
+          PACKAGE: builds/web
