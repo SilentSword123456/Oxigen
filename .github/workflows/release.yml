@@ -2,9 +2,13 @@ name: Build and Publish to itch.io
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
   workflow_dispatch:
+
+concurrency:
+  group: itch-publish
+  cancel-in-progress: false
 
 permissions:
   contents: read
