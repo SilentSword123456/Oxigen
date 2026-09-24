@@ -6,6 +6,9 @@ on:
       - "v*"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 env:
   GODOT_VERSION: 4.7.2
   ITCH_USER: silentsword-123
@@ -29,8 +32,20 @@ jobs:
 
       - name: Prepare build artifacts
         run: |
+          set -e
+          ARCHIVES="/home/runner/.local/share/godot/archives"
+          ls -la "$ARCHIVES"
           mkdir -p "${{ github.workspace }}/builds"
-          cp "/home/runner/.local/share/godot/archives/Windows Desktop.zip" "${{ github.workspace }}/builds/windows.zip"
+          cp "$ARCHIVES/Windows Desktop.zip" "${{ github.workspace }}/builds/windows.zip"
+          cp "$ARCHIVES/Web.zip" "${{ github.workspace }}/builds/web.zip"
+
+      - name: Verify web build layout
+        run: |
+          unzip -l builds/web.zip
+          if ! unzip -l builds/web.zip | grep -qE '[[:space:]]index\.html$'; then
+            echo "::error::index.html is not at the root of web.zip"
+            exit 1
+          fi
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -60,3 +75,12 @@ jobs:
           ITCH_GAME: ${{ env.ITCH_GAME }}
           ITCH_USER: ${{ env.ITCH_USER }}
           PACKAGE: builds/windows.zip
+
+      - name: Publish Web build
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: html5
+          ITCH_GAME: ${{ env.ITCH_GAME }}
+          ITCH_USER: ${{ env.ITCH_USER }}
+          PACKAGE: builds/web.zip
