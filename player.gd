@@ -1,14 +1,26 @@
 extends CharacterBody2D
 
+@onready var health_bar = $HealthBar
+
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
 	
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 var JUMP_NUMBER=0
+var health=15
 
 func die() -> void:
-	velocity.y=-10000
+	Global.reset_coins()
+	get_tree().reload_current_scene()
+
+func take_damage(hp: int) -> void:
+	health-=hp
+	if health<=0:
+		die()
+		return
+		
+	health_bar.value = health
 
 func _chose_animation() -> void:
 	if is_zero_approx(velocity.x) && is_zero_approx(velocity.y):

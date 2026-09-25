@@ -3,22 +3,59 @@
 [ext_resource type="Script" uid="uid://cl0h5lka0158v" path="res://spike.gd" id="1_dl81w"]
 [ext_resource type="Texture2D" uid="uid://20eso65b4l8j" path="res://assets/Idle.png" id="1_gf172"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grxg4"]
+size = Vector2(27.5, 3)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kj5nt"]
+a = Vector2(-8, 3)
+b = Vector2(-13, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_grxg4"]
+a = Vector2(-9, 3)
+b = Vector2(-3, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_72exd"]
+a = Vector2(7, 3)
+b = Vector2(1, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w8b5d"]
+a = Vector2(6, 3)
+b = Vector2(12, 11)
+
 [node name="Spike" type="Area2D" unique_id=162384]
 script = ExtResource("1_dl81w")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1548791891]
-position = Vector2(7, 4.5)
+position = Vector2(4.7683716e-07, 0)
 scale = Vector2(1.875, 1.5625)
 texture = ExtResource("1_gf172")
 
 [node name="CollisionPolygon2D-Spike1" type="CollisionPolygon2D" parent="." unique_id=1670875550]
-position = Vector2(6, 5)
+position = Vector2(-1, 2.9802322e-08)
 scale = Vector2(1.6704991, 1.564174)
-polygon = PackedVector2Array(-8, 8, -8, 6, -5, 1, -4, 1, -2.3526802, 3.745531, -1, 6, -1, 8)
+polygon = PackedVector2Array(-8.380729, 8.09799, -8.380729, 5.9669404, -5.1880703, 1.065525, -3.791282, 1.065525, -0.59862345, 5.9669404, -0.59862345, 8.09799)
 
 [node name="CollisionPolygon2D-Spike2" type="CollisionPolygon2D" parent="." unique_id=1040263222]
-position = Vector2(7.8865476, 5)
+position = Vector2(0.33333254, 0.33333302)
 scale = Vector2(1.6608188, 1.517857)
-polygon = PackedVector2Array(0, 8, 0, 6, 3, 1, 4, 1, 7, 6, 7, 8)
+polygon = PackedVector2Array(4.7683716e-07, 8.125492, 4.7683716e-07, 5.929413, 3.0105639, 0.87843174, 4.2147894, 0.87843174, 7.827465, 6.1490207, 7.827465, 8.125492)
 
-[connection signal="area_entered" from="." to="." method="_on_body_entered"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=221403403]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1633784043]
+position = Vector2(-0.75, 11)
+shape = SubResource("RectangleShape2D_grxg4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1033145350]
+shape = SubResource("SegmentShape2D_kj5nt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1087732024]
+shape = SubResource("SegmentShape2D_grxg4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1099433514]
+shape = SubResource("SegmentShape2D_72exd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=303193364]
+shape = SubResource("SegmentShape2D_w8b5d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
