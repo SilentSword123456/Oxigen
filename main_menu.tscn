@@ -1,0 +1,281 @@
+[gd_scene format=3 uid="uid://b2o1n6x1m57rq"]
+
+[ext_resource type="Script" uid="uid://b6uf7ajupbgfs" path="res://main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://co3prgl4gaxng" path="res://assets/Background layers/Layer_0011_0.png" id="bg_0"]
+[ext_resource type="Texture2D" uid="uid://p7dr3lmofkto" path="res://assets/Background layers/Layer_0010_1.png" id="bg_1"]
+[ext_resource type="Texture2D" uid="uid://e0hv3dk88cb" path="res://assets/Background layers/Layer_0009_2.png" id="bg_2"]
+[ext_resource type="Texture2D" uid="uid://rchuxl723yls" path="res://assets/Background layers/Layer_0008_3.png" id="bg_3"]
+[ext_resource type="Texture2D" uid="uid://bbf5cac5sfky" path="res://assets/Background layers/Layer_0007_Lights.png" id="bg_4"]
+[ext_resource type="Texture2D" uid="uid://dt7ngx3xcbkuo" path="res://assets/Background layers/Layer_0006_4.png" id="bg_5"]
+[ext_resource type="Texture2D" uid="uid://dsikjhi0vsele" path="res://assets/Background layers/Layer_0005_5.png" id="bg_6"]
+[ext_resource type="Texture2D" uid="uid://dkxtiplw3sngg" path="res://assets/Background layers/Layer_0004_Lights.png" id="bg_7"]
+[ext_resource type="Texture2D" uid="uid://bubeejaowwp45" path="res://assets/Background layers/Layer_0003_6.png" id="bg_8"]
+[ext_resource type="Texture2D" uid="uid://5vvjbfx4fl1h" path="res://assets/Background layers/Layer_0002_7.png" id="bg_9"]
+[ext_resource type="Texture2D" uid="uid://c8jf14kgkchp0" path="res://assets/Background layers/Layer_0001_8.png" id="bg_10"]
+[ext_resource type="Texture2D" uid="uid://dfqnupa88umuo" path="res://assets/Background layers/Layer_0000_9.png" id="bg_11"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_selected"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.88, 0.89, 0.78, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_normal"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+
+[sub_resource type="Theme" id="Theme_menu"]
+default_font_size = 22
+Button/colors/font_color = Color(0.88, 0.89, 0.78, 1)
+Button/colors/font_focus_color = Color(0.08, 0.12, 0.12, 1)
+Button/colors/font_hover_color = Color(0.08, 0.12, 0.12, 1)
+Button/colors/font_pressed_color = Color(0.08, 0.12, 0.12, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_selected")
+Button/styles/hover = SubResource("StyleBoxFlat_selected")
+Button/styles/normal = SubResource("StyleBoxEmpty_normal")
+Button/styles/pressed = SubResource("StyleBoxFlat_selected")
+Label/colors/font_color = Color(0.88, 0.89, 0.78, 1)
+
+[node name="MainMenu" type="Control" unique_id=2047490646]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_menu")
+script = ExtResource("1_menu")
+
+[node name="Scenery" type="Control" parent="." unique_id=1469838302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer0" type="TextureRect" parent="Scenery" unique_id=2010424433]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_0")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer1" type="TextureRect" parent="Scenery" unique_id=1649503211]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer2" type="TextureRect" parent="Scenery" unique_id=748981093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer3" type="TextureRect" parent="Scenery" unique_id=838736675]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer4" type="TextureRect" parent="Scenery" unique_id=950268763]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_4")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer5" type="TextureRect" parent="Scenery" unique_id=1325652408]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer6" type="TextureRect" parent="Scenery" unique_id=380026838]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer7" type="TextureRect" parent="Scenery" unique_id=330830095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_7")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer8" type="TextureRect" parent="Scenery" unique_id=1748258100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_8")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer9" type="TextureRect" parent="Scenery" unique_id=915376622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_9")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer10" type="TextureRect" parent="Scenery" unique_id=1565817922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_10")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Layer11" type="TextureRect" parent="Scenery" unique_id=2018853137]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("bg_11")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Shade" type="ColorRect" parent="." unique_id=1611840443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.025, 0.04, 0.045, 0.46)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=775757430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Menu" type="VBoxContainer" parent="Center" unique_id=1752466186]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Menu" unique_id=1766617391]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.035, 0.05, 0.05, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 64
+text = "OXIGEN"
+horizontal_alignment = 1
+
+[node name="Space" type="Control" parent="Center/Menu" unique_id=1130687519]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Play" type="Button" parent="Center/Menu" unique_id=1481023651]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Quit")
+mouse_default_cursor_shape = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="Center/Menu" unique_id=549304185]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Play")
+mouse_default_cursor_shape = 2
+text = "Quit"
+
+[node name="SpaceBelow" type="Control" parent="Center/Menu" unique_id=1059663567]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Controls" type="Label" parent="Center/Menu" unique_id=187748902]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Use A/D to move and W to jump (and double jump)"
+horizontal_alignment = 1
+
+[node name="Error" type="Label" parent="Center/Menu" unique_id=1306054455]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Could not open the level. Try again."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Center/Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Center/Menu/Quit" to="." method="_on_quit_pressed"]
